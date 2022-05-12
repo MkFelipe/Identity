@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B113FB1F-9260-47E3-B665-365CBD23E256}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Domain", "src\Identity.Domain\Identity.Domain.csproj", "{BCBB4C39-7461-42F1-9990-CF81E6150F8C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Services", "src\Identity.Services\Identity.Services.csproj", "{509770DD-6A6E-41CA-8798-71FC42F6A1E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +22,5 @@ Global
 		{509770DD-6A6E-41CA-8798-71FC42F6A1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{509770DD-6A6E-41CA-8798-71FC42F6A1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{509770DD-6A6E-41CA-8798-71FC42F6A1E2}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{BCBB4C39-7461-42F1-9990-CF81E6150F8C} = {B113FB1F-9260-47E3-B665-365CBD23E256}
-		{509770DD-6A6E-41CA-8798-71FC42F6A1E2} = {B113FB1F-9260-47E3-B665-365CBD23E256}
 	EndGlobalSection
 EndGlobal

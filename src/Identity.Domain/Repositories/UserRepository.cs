@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Identity.Domain.Entities;
 using Identity.Domain.Repositories.Interfaces;
 using MongoDB.Driver;
@@ -17,6 +18,13 @@ namespace Identity.Domain.Repositories
 			var user = await FindOneAsync(x => x.Nickname == nickname);
 
 			return user;
+		}
+
+		public override async Task InsertAsync(User item)
+		{
+			item.EntityId = Guid.NewGuid();
+
+			await base.InsertAsync(item);
 		}
 	}
 }

@@ -1,13 +1,16 @@
 ﻿using System.Threading.Tasks;
 using Identity.Domain.Entities;
 
-namespace Identity.Domain.Repositories.Interfaces;
-public interface IUserRepository : IRepository<User>
+namespace Identity.Domain.Repositories.Interfaces
 {
-	/// <summary>
-	/// Find an user by nickname.
-	/// </summary>
-	/// <param name="nickname">string to be searched.</param>
-	/// <returns>A user or null</returns>
-	Task<User> GetUserByNickname(string nickname);
+	public interface IUserRepository : IRepository<User>
+	{
+		/// <summary>
+		/// Find an user by nickname.
+		/// </summary>
+		/// <param name="nickname">string to be searched.</param>
+		/// <returns>A user or null</returns>
+		Task<User> GetUserByNickname(string nickname);
+	}
 }
+

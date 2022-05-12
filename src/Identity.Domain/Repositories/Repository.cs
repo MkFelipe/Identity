@@ -65,7 +65,7 @@ namespace Identity.Domain.Repositories
 			return result;
 		}
 
-		public async Task InsertAsync(T item)
+		public virtual async Task InsertAsync(T item)
 		{
 			await _collection.InsertOneAsync(item);
 		}
