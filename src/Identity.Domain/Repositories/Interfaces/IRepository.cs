@@ -26,6 +26,12 @@ public interface IRepository<T> where T : IEntity
 	/// </summary>
 	/// <param name="expression">Boolean expression related to the search query.</param>
 	/// <returns>An objec on the collection or null.</returns>
+	Task<T> FindOneAsync(Expression<Func<T, bool>> expression);
+	/// <summary>
+	/// Find items at the collection based in an expression
+	/// </summary>
+	/// <param name="expression">Boolean expression related to the search query.</param>
+	/// <returns>An objec on the collection or null.</returns>
 	Task<List<T>> FindAsync(Expression<Func<T, bool>> expression);
 	/// <summary>
 	/// Get paged results based on the search parameters.

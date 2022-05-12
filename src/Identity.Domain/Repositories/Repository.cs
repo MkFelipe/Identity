@@ -15,8 +15,7 @@ namespace Identity.Domain.Repositories
 {
 	public class Repository<T> : IRepository<T> where T : IEntity
 	{
-		internal IMongoCollection<T> _collections;
-		internal IMongoCollection<T> _commitsCollections;
+		internal IMongoCollection<T> _collection;
 		internal IMongoDatabase _database;
 		public Repository(IMongoClient client)
 		{
@@ -36,19 +35,24 @@ namespace Identity.Domain.Repositories
 
 		public async Task<List<T>> FindAllAsync()
 		{
-			return await _collections.AsQueryable().ToListAsync();
+			return await _collection.AsQueryable().ToListAsync();
+		}
+
+		public async Task<T> FindOneAsync(Expression<Func<T, bool>> expression)
+		{
+			return await _collection.AsQueryable().FirstOrDefaultAsync(expression);
 		}
 
 		public async Task<List<T>> FindAsync(Expression<Func<T, bool>> expression)
 		{
-			var cursor = _collections.AsQueryable().Where(expression);
+			var cursor = _collection.AsQueryable().Where(expression);
 
 			return await cursor.ToListAsync();
 		}
 
 		public async Task<PagedQueryResult<T>> GetPaged(Expression<Func<T, bool>> expression, int current, int pageSize)
 		{
-			var cursor = _collections.AsQueryable().Where(expression);
+			var cursor = _collection.AsQueryable().Where(expression);
 
 			var result = new PagedQueryResult<T>
 			{
@@ -63,13 +67,13 @@ namespace Identity.Domain.Repositories
 
 		public async Task InsertAsync(T item)
 		{
-			await _collections.InsertOneAsync(item);
+			await _collection.InsertOneAsync(item);
 		}
 
 		public async Task UpdateAsync(Guid entityId, UpdateDefinition<T> updateDefinition)
 		{
 			var filter = new BsonDocument("entityId", new BsonBinaryData(entityId, GuidRepresentation.CSharpLegacy));
-			await _collections.FindOneAndUpdateAsync(filter, updateDefinition);
+			await _collection.FindOneAndUpdateAsync(filter, updateDefinition);
 		}
 	}
 }
